@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>My First Jquery Programing</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript" src="../jquery-2.0.0.min.js"></script>
+
+</head>
+
+<body>
+<input type="text" name="textbox" id="textbox" value=""> </input>
+<input type="button" name="button_showtext" id="button_showtext" value="Click Me" > </input>
+<script>
+// Cach lay 1 object voi id="textbox" trong jquery
+	var object_btn = $("#button_showtext");
+	object_btn.click(function(){
+		var object_textbox = $("#textbox");
+		alert(object_textbox.val());
+	});
+</script>
+</body>
+</html>

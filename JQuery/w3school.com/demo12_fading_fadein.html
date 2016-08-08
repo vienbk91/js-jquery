@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Fading</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("button").click(function(){
+				$("#div1").fadeIn('slow', function() {
+					$("#div2").fadeIn('slow', function() {
+						$("#div3").fadeIn();
+					});
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+<p><h3>Hieu ung fadeIn() trong jQuery</h3></p>
+<button>Click to fade in boxer</button>
+<br><br><br>
+<p>
+<div id="div1" style="width:80px;height:80px;display:none;background-color:red;"></div>
+<br>
+<div id="div2" style="width:80px;height:80px;display:none;background-color:green;"></div>
+<br>
+<div id="div3" style="width:80px;height:80px;display:none;background-color:blue;"></div>
+</p>
+</body>
+</html>

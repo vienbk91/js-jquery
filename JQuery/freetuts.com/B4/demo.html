@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>JQuery Selectors Attributes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script language="javascript" src="../jquery-2.0.0.min.js"></script>
+	<style>
+		body {
+			margin: 20px;
+		}
+		a {
+			display: block;
+			border: solid 1px blue;
+			padding: 5px;
+			height: 30px;
+			line-height: 30px;
+			text-decoration: none;
+			margin-bottom: 20px;
+		}
+		.selected {
+			border: solid 1px;
+			color: white;
+			background: blue;
+		}
+	</style>
+	<script>
+		$(document).ready(function(){
+			$("#btn_1").click(function(){
+				// Lấy thẻ a có thuộc tính title và giá trị của title bắt đầu bằng từ "freetuts"
+				$('a[title|= "freetuts"]').addClass('selected');
+				// Lấy thẻ HTML có thuộc tính title và giá trị của title bắt đầu bằng từ "freetuts"
+				$('[title |= "freetuts"]').addClass('selected');
+				// Lấy thẻ a có thuộc tính title và giá trị của title chỉ cần tồn tại "freetuts" trong đó là được
+				$('a[title *= "title"]').addClass('selected');
+				// Tìm thẻ a có thuộc tính title và giá trị của value phải xuất hiện từ "title" . Như thế nghĩa là title-demo cũng không được vì nó đã có thêm chữ -demo. (Từ có nghĩa là đầu và đuôi nó phải có khoảng trắng)
+				$('a[title ~= "title"]').addClass('selected');
+				// Xuất hiện kí tự cuối cùng là title	
+				$('a[title $= "title"]').addClass('selected');
+				// So sánh bằng, nghĩa là thẻ title bắt buộc phải là "title"
+				$('a[title = "title"]').addClass('selected');
+				// So sánh không bằng
+				$('a[title != "title"]').addClass('selected');
+				// Tìm thẻ a có thuộc tính name , và thuộc tính title có giá trị là "title"
+				$('a[name][title = "title"]').addClass('selected');
+			});
+		});
+		/*
+		Như vậy trong jQuery thì khi xác định 1 đối tượng nào đó thì 
+		$(tên tag[tên thuộc tính1 = "giá trị thuộc tính 1 nếu có"][thuộc tính 2]...)
+		*/
+	</script>
+</head>
+<body>
+	<a href="#1" title="freetuts-homepage" >Test1</a>
+	<a href="#2" title="freetuts-dowload-video" >Test2</a>
+	<a href="#3" title="freetuts" >Test3</a>
+	<a href="#4" title="hoc-lap-trinh-online" >Test4</a>
+	<br>
+	<input type="button" name="btn_1" id="btn_1" value="Click Me Show name-{something}" />
+</body>
+</html>

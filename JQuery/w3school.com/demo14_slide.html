@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Slide</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#slideDown").click(function(){
+				$("#panel1").slideDown();
+			});
+			$("#slideUp").click(function(){
+				$("#panel2").slideUp();
+			});
+			$("#slideToggle").click(function() {
+				$("#panel1").slideToggle();
+			});
+		});
+	</script>
+	<style type="text/css">
+		.panel, #slideUp, #slideDown ,#slideToggle {
+			padding: 5px;
+			text-align: center;
+			background-color: #e5eecc;
+			border: solid 1px #c3c3c3;
+		}
+		#panel1 {
+			padding: 50px;
+			display: none;
+		}
+		#panel2 {
+			padding: 50px;
+			display: block;
+		}
+
+	</style>
+</head>
+<body>
+<p>
+<div id="slideDown">SlideDown</div><br>
+<div id="slideToggle">SlideToggle</div><br>
+<div class="panel" id="panel1">Hello world SlideDown!</div>
+</p>
+<p>
+<div id="slideUp">SlideUp</div>
+<div class="panel" id="panel2">Hello world SlideUp </div>
+</p>
+
+</body>
+</html>

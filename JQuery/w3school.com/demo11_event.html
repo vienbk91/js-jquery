@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Event</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("p.click").click(function() {
+				$(this).addClass('selected');
+			});
+			$("p.dbclick").dblclick(function() {
+				$(this).addClass('selected');
+			});
+			$("p.mouseenter").dblclick(function() {
+				$(this).addClass('selected');
+				alert("Ban da tien vao vung duoc chon");
+			});
+			$("p.mouseleave").dblclick(function() {
+				$(this).addClass('selected');
+				alert("Ban da roi chuot khoi vung duoc chon");
+			});
+		});
+	</script>
+	<style type="text/css">
+		.selected {
+			color: red;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+<p class="click">If you click on me, I will disappear.</p>
+<p class="click">Click me away!</p>
+<p class="click">Click me too!</p>
+
+<p class="dbclick">If you click on me, I will disappear.</p>
+<p class="dbclick">Click me away!</p>
+<p class="dbclick">Click me too!</p>
+
+<p class="mouseenter">If you click on me, I will disappear.</p>
+<p class="mouseenter">Click me away!</p>
+<p class="mouseenter">Click me too!</p>
+
+<p class="mouseleave">If you click on me, I will disappear.</p>
+<p class="mouseleave">Click me away!</p>
+<p class="mouseleave">Click me too!</p>
+
+</body>
+</html>

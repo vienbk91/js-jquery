@@ -1,0 +1,290 @@
++++++++++++++
++ jQuery Syntax
++++++++++++++
+Cú pháp jQuery thích hợp cho việc lựa chọn các phần tử HTML và thực hiện một số hành động trên các phần tử đó.
+Cú pháp cơ bản: $(selector).action();
+
+Sử dụng event document ready dùng để ngăn chặn việc bất kì mã jQuery nào chạy trước khi tài liệu được tải xong. Nghĩa là chương trình sẽ chờ đợi để nội dung tài liệu được nạp đầy đủ trước khi mã jQuery thực thi. Việc sử dụng document ready event sẽ ngăn chặn việc mã jQuery phát sinh lỗi khi không xác định được phần tử, điều này gây ra lỗi cho toàn bộ mã jQuery trong chương trình và sẽ khó debug.
+
+$(document).ready(function(){
+	// jQuery code
+});
+
+Hoặc ta có thể viết gọn nó với mẫu:
+$(function(){
+	// jQuery code
+});
+
++++++++++++++
++ jQuery Selector
++++++++++++++
+jQuery selector cho phép bạn chọn và thao tác phần tử HTML (s). 
+
+jQuery Selectors được sử dụng để 'find' (hoặc select) các yếu tố HTML dựa trên tên, id, các class , các type , attributes (thuộc tính) , value(giá trị) của các attributes và nhiều hơn nữa. Nó dựa trên các Selectors CSS hiện có, và ngoài ra, nó có một số bộ chọn tùy chỉnh của riêng.
+
+Tất cả các Selectors trong jQuery bắt đầu với ký hiệu đô la và dấu ngoặc đơn:. $().
+
+1. Phần tử selector
+Trong jQuery thì các phần tử selector được lựa chọn theo tên của nó
+ví dụ: Bạn cần chọn tất cả các phần tử thẻ <p> thì ta có: $("p")
+Tham khảo demo1.html
+
+2. #id Selector
+Trong jQuery thì phần tử #id được sử dụng để tìm kiếm các phần tử với thuộc tính id trong html. Do trong HTML thì 1 id phải là duy nhất nên bạn sử dụng thuộc tính id khi bạn muốn tìm yếu tố duy nhất.
+vd: Lấy phần tử có id  = "test" thì ta sử dụng $('#test') hoặc $("#test") đều ok
+
+3. .class Selector
+Trong jQuery thì ngoài việc tìm kiếm phần tử với id thì ta có thể tìm kiếm phần tử với class: $('.class_name'). Do id thì duy nhất những class thì nhiều thẻ có thể dùng chung 1 class nên việc sử dụng class selector sẽ được dùng khi thao tác với các thẻ có chung 1 mục đích sử dụng.
+
+4. Lựa chọn attributes
+Trong jQuery muốn lựa chọn các thuộc tính của thẻ thì ta sử dụng
+$("thẻ[attribute1_name][attribute2_name]...")
+Nếu không định nghĩa thẻ thì ta chỉ cần khai báo attributes name, jQuery sẽ tự động lọc tất cả các tag có attributes khai báo.
+
+5. Một số ví dụ
+$("p.intro") : thẻ <p> có class="intro"
+$("*"): lựa chọn tất cả các phần tử html
+$(this): lựa chọn phần tử html hiện tại
+$("p:first"): lựa chọn phần tử <p> đầu tiên
+$("ul li:first") : lựa chọn phần tử <li> đầu tiên của thẻ <ul> đầu tiên
+$("[href]") : lựa chọn tất cả các phần tử có thuộc tính href
+$("a[target='_blank']") : lựa chọn tất cả các thẻ <a> có thuộc tính target="_blank"
+$(":button") : chọn tất cả các phần tử <button> hoặc <input> có type="button" . Như vậy chọn các thẻ có type = "type_name" thì ta sử dụng $(":type_name")
+
+6. Một số mở rộng của selector
++).class_name : Thường dùng với selector theo name và type. Trả ra một nhóm các đối tượng có class name tương ứng. VD:
+jQuery("div.test") sẽ trả ra một nhóm các đối tượng là thẻ div có thuộc tính class là test.
+jQuery("#my_ul li.select") trả ra một nhóm các đối tượng là thẻ li có class là select và thẻ li là con của thẻ ul có id là my_ul.
++):selected : Dùng để lấy ra các đối tượng có thuộc tính selected là true. VD:
+jQuery("option:selected") sẽ trả ra một nhóm các option có thuộc tính selected bằng true.
++):checked : Thường dùng với checkbox và radio để lấy ra những đối tượng được checked. VD:
+jQuery("[name='checkbox_list_name']:checked") sẽ trả ra một nhóm các checkbox theo tên truyền vào có thuộc tính checked bằng true.
+jQuery("[name='radio_name']:checked") sẽ trả ra một nhóm các radio theo tên truyền vào có thuộc tính checked bằng true.
++):disabled :Trả về các thẻ có thuộc tính disabled. VD:
+jQuery(":disabled") trả về toàn bộ các thẻ có thuộc tính disabled.
+jQuery("input:disabled") trả về toàn bộ các thẻ input có thuộc tính disabled.
+jQuery("form input:disabled") trả về toàn bộ các thẻ input nằm trong thẻ form có thuộc tính disabled.
++):odd : Trả về các thẻ có số thứ tự lẻ của đối tượng được chọn. VD:
+jQuery("li:odd") trả về toàn bộ các thẻ li trên toàn trang web có thứ tự lẻ(1, 3, 5...).
+jQuery("#ul_list li:odd") trả về toàn bộ các thẻ li con của đối tượng có id là ul_list có thứ tự lẻ.
+jQuery("tr:odd") trả về toàn bộ các thẻ tr trên toàn trang web có thứ tự lẻ(1, 3, 5..).
+jQuery("#mytable tr:odd") trả về toàn bộ các thẻ tr con của đối tượng có id là mytable có thứ tự lẻ.
++):even : Trả về các thẻ có số thứ tự chẵn của đối tượng được chọn. VD:
+jQuery("li:even") trả về toàn bộ các thẻ li trên toàn trang web có thứ tự chẵn(2, 4, 6...).
+jQuery("#ul_list li:even") trả về toàn bộ các thẻ li con của đối tượng có id là ul_list có thứ tự chẵn.
+jQuery("tr:even") trả về toàn bộ các thẻ tr trên toàn trang web có thứ tự chẵn(2, 4, 6...).
+jQuery("#mytable tr:even") trả về toàn bộ các thẻ tr con của đối tượng có id là mytable có thứ tự chẵn.
+
++++++++++++++
++ jQuery Event Methods
++++++++++++++
+Tất cả các hành động đáp ứng lại thao tác của khách hàng đối với trang web được gọi là sự kiện. Và 1 sự kiện đại diện cho việc chính xác tại 1 thời điểm xảy ra 1 việc gì đó.
+vd: di chuyển chuột trên 1 phần tử , click chuột vào 1 phần tử , lựa chọn 1 button radio ,... -> tất cả đều là các sự kiện
+Các sự kiện cần biết:
+Sự kiện chuột: click(click vào vùng được chọn ) , dbclick (double click vào vùng được chọn) , mourseenter (di chuyển chuột vào vùng được chọn ) , mourseleave (di chuyển chuột ra khỏi vùng được chọn) , mouseup( click chuột vào và sự kiện được nhận khi nhả chuột ra ) , mousedown( sự kiện click chuột vào vùng được chọn và giữ chuột)
+Sự kiện keyboad: keypress , keydown , keyup
+Sự kiện form: submit , change , focus , blur
+Sự kiện document/window: load , resize , scroll , unload
+
+jQuery Syntax với các sự kiện event
++ Sự kiện click
+$("element").click();
+Tuy nhiên để thực thi sự kiện thì ta cần xử lý nó trong function như sau
+$("element").click(function(){
+	// action code
+});
+
++ focus event là sự kiện xảy ra khi ta đến 1 phần tử nào đó của form
++ onchange : sự kiện xảy ra khi ta thay đổi giá trị 1 phần tử của form
+
+Tham khảo : https://quyetdo289.wordpress.com/2012/07/09/jquery-events-cac-su-kien-cua-chuot/
+
++ Sự kiện on : Có thê gắn nhiều xử lý sự kiện cho 1 thành phần được chọn
+$("element").on({
+	mouseenter : function(){
+		// mouseenter event control code
+	} ,
+	mouseleave : function(){
+		// mouseleave event control code
+	} ,
+	click : function(){
+		// click event control code
+	}
+});
+
+$("element").on("click" , function(){
+	// click event control code
+});
+
+
++++++++++++++
++ jQuery Effects - Hide and Show
++++++++++++++
+
+Sử dụng method hide() và show() để thực hiện việc ẩn và hiện phần tử HTML
+$(selector).hide(speech , callback);
+$(selector).show(speech , callback);
+Trong đó speech có thể là "slow" , "fast" hoặc số mini giây cụ thể
+$("element").click(function(){
+	$("p").hide(); 
+	// hoặc
+	$("p").hide(1000);
+	// hoặc
+	$("p").hide(1000 , function(){
+		alert("hide tag <p> content");
+	})
+});
+
+Trong jQuery , thay vì ta phải xử lý với 2 đối tượng cho việc ẩn và hiện thì ta có thể sử dụng toggle() method để thực hiện chức năng ẩn và hiện với đối tượng được gọi đến
+$("button").click(function(){
+	$("p").toggle(); // Như vậy toàn bộ tag <p> sẽ được ẩn và hiện khi click button
+});
+
++++++++++++++
++ jQuery Effects - Fading
++++++++++++++
+jQuery hỗ trọ hiệu ứng làm mờ từ trong và ngoài đối với phần tử HTML
+fadeIn() : Hiển thị các thành phần phù hợp với hiệu ứng rõ dần
+$(selector).fadeIn(speed,callback);
+fadeOut(): Làm ẩn các thành phần được gọi với hiệu ứng mờ dần
+$(selector).fadeOut(speed,callback);
+fadeTogget() : Làm ẩn và hiện với hiệu ứng mờ dần, rõ dần theo tgian và tốc độ tùy chỉnh
+$(selector).fadeToggle(speed,callback);
+fadeTo() : Làm mờ với độ opacity từ 0 đến 1
+$(selector).fadeTo(speed,opacity,callback);
+
++++++++++++++
++ jQuery Effects - Sliding
++++++++++++++
+
+slideDown() : Tạo hiệu ứng slide mở từ trên xuống
+$(selector).slideDown(speed,callback);
+slideUp() : Tạo hiệu ứng thu slide từ dưới lên
+$(selector).slideUp(speed,callback);
+slideToggle() : Tổng hợp của slideDown và slideUp cho 1 đối tượng html
+$(selector).slideToggle(speed,callback);
+
+Tương tự như hiệu ứng fade thì slide cũng có thiết lập tgian chạy hiệu ứng cũng như callback cho các xử lý sau khi hiệu ứng chạy xong.
+
++++++++++++++
++ jQuery Effects - Animation
++++++++++++++
+Trong jQuery có hỗ trợ việc tạo hiệu ứng với animate() method
+$(selector).animate({params},speed,callback);
+Trong đó selector là đối tượng thực thi animation , params là các thuộc tính CSS sẽ thay đổi khi thực thi animation , speed là tốc độ animation thực thi ("slow" , "fast" hoặc là mini giây cụ thể) và callback là handler xử lý sau khi animation thực hiện xong
+Chú ý là params sẽ được đặt trong ngoặc {} cho dù có speed hay callback hay không.
+
+// Khai báo params
+$("button").click(function(){
+    $("div").animate({left: '250px'});
+}); 
+
+// Khai báo nhiều thuộc tính CSS , cách nhau bởi dấu phẩy
+$("button").click(function(){
+    $("div").animate({
+        left: '250px',
+        opacity: '0.5',
+        height: '150px',
+        width: '150px'
+    });
+}); 
+
+// Sử dụng các giá trị có sẵn thông qua phép gán với += , -=
+$("button").click(function(){
+    $("div").animate({
+        left: '250px',
+        height: '+=150px',
+        width: '+=150px'
+    });
+});
+
+// Có thể sử dụng các giá trị như "hide" , "show" và "toggle"
+$("button").click(function(){
+    $("div").animate({
+        height: 'toggle'
+    });
+});
+
+// Thực thi nhiều animate theo thứ tự khai báo
+$("button").click(function(){
+    var div = $("div");
+    div.animate({height: '300px', opacity: '0.4'}, "slow");
+    div.animate({width: '300px', opacity: '0.8'}, "slow");
+    div.animate({height: '100px', opacity: '0.4'}, "slow");
+    div.animate({width: '100px', opacity: '0.8'}, "slow");
+}); 
+
++++++++++++++
++ jQuery Effects - Stop Animation
++++++++++++++
+jQuery hỗ trợ stop() method cho việc dừng các hiệu ứng effect như là slide , fade , custom animation lại.
+$(selector).stop(stopAll,goToEnd);
+
++++++++++++++
++ jQuery Effects - Callback Functions
++++++++++++++
+Callback - gọi lại, bản chất của tham số callback chính là 1 hàm callback , và hàm sẽ được thực thi sau khi kết thúc hiệu ứng hiện thời.
+Callback sẽ giúp cho các hiệu ứng thực hiện có thứ tự.
+Ví dụ có sử dụng callback
+$("button").click(function(){
+    $("p").hide("slow", function(){
+        alert("The paragraph is now hidden");
+    });
+});
+Ví dụ không sử dụng callback
+$("button").click(function(){
+    $("p").hide(1000);
+    alert("The paragraph is now hidden");
+});
+
++++++++++++++
++ jQuery Effects - Chaining
++++++++++++++
+Tại cùng 1 phần tử thì bạn có thể dụng nhiều lần phương thức animate() để thiết lập các hiệu ứng liên tiếp. Tuy nhiên, khi bạn dùng phương thức animate() thì nếu muốn thiết lập bao nhiêu hiệu ứng cho phần tử thì bạn phải viết bấy nhiêu lệnh. JQuery đã hỗ trợ 1 cách thức khác để tránh điều đó, gọi là "chaining - loạt hiệu ứng".
+$(bộ chọn).hiệu_ứng_1.hiệu_ứng_2.hiệu_ứng_3...;
+Ví dụ:
+$(function(){
+	$("button").click(function(){
+		$("#p1")
+		.css('color' ,'red')
+		.slideUp(1000)
+		.slideDown(1000)
+		.animate({left : '30%'}, 1000)
+		.animate({left : '0%'} , 1000)
+		.animate({fontSize : '20px'} , 1000)
+		.animate({fontSize : '16px'} , 1000);
+	});
+});	
+
+++++++++++++++++++++++++++++++++++
++ jQuery - HTML                  +
+++++++++++++++++++++++++++++++++++
+
++++++++++++++
++ jQuery - Get - Set content and Attributes
++++++++++++++
+jQuery là 1 công cụ mạnh mẽ để thay đổi và thao tác với các đối tượng HTML
+1. jQuery điều khiển DOM (Document Object Model)
+Một phần rất quan trọng của JQuery là khả năng thao tác DOM. JQuery đi kèm với 1 loạt các phương pháp liên quan DOM làm cho nó dễ dàng truy cập và thao các với các element và attributes
+
+2. Lấy nội dung với: text() , html() và val()
+text(): Thiết lập(set) hoặc là trả về(return) nội dung text của đối tượng được lựa chọn
+html(): Thiết lập(set) hoặc là trả về(return) nội dung text của đối tượng được lựa chọn (bao gồm cả các đánh dấu HTML)
+val(): Thiết lập(set) hoặc là trả về(return) giá trị của trường form. Chính vì thế mà val() sẽ không thực hiện với các đối tượng không phải là trường form (chi có thẻ <input> mới là trường form)
+
+$(bộ_chọn).text("nội dung"); // Thiết lập nội dung cho bộ chọn
+$(bộ_chọn).text(); // Lấy nội dung bộ chọn
+
+$(bộ_chọn).html("nội dung"); // Thiết lập nội dung cho bộ chọn , và nội dung phải chứa cả các thẻ html
+$(bộ_chọn).html(); // Lấy nội dung bộ chọn
+
+$(bộ_chọn).val("nội dung"); // Thiết lập nội dung cho bộ chọn
+$(bộ_chọn).val(); // Lấy nội dung bộ chọn
+
+3. Lấy attributes
+JQuery lấy giá trị của các trường bằng hàm: attr();
+
+4. Hàm callback cho text() , html() , val() 
+$(bộ_chọn).text(function(i , nội_dung_cũ){
+	return nội_dung_mới;
+});

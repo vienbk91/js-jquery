@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JQuery Get</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$("#button1").click(function(){
+				alert("Text : " + $("#test").text());
+			});
+
+			$("#button2").click(function(){
+				alert("HTML: " + $("#test").html());
+			});
+			$("#button3").click(function(){
+				alert("Value: " + $("#text_lb").val());
+			});
+			$("#button4").click(function(){
+				alert("Attrinbutes: " + $("#w3s").attr("href"));
+			});
+		});
+	</script>
+</head>
+<body>
+<p id="test"> This is <b>bold</b> text in a paragraph.</p>
+<input type="hidden" name="text_lb" id="text_lb" value="Input form content"></input>
+<p><a href="http://www.w3schools.com" id="w3s">W3Schools.com</a></p>
+
+<button id="button1">Show Text</button>
+<button id="button2">Show HTML</button>
+<button id="button3">Get ValueForm</button>
+<button id="button4">Get Attributes</button>
+</body>
+</html>

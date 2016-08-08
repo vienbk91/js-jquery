@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Animation</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script>
+		/**
+		 * $("element").animate({property:"value"});
+		 * $("element").animate({property:"value", property:"value",...});
+		 * $("element").animate({property:"value"},speed);
+		 */
+		$(document).ready(function(){
+			$("button").click(function(){
+				$("#temp").animate({height: '300px' , opacity: '0.4'}, "slow");
+				$("#temp").animate({width: '300px' , opacity: '0.8'}, "slow");
+				$("#temp").animate({height: '100px' , opacity: '0.4'}, "slow");
+				$("#temp").animate({width: '100px' , opacity: '0.8'}, "slow");
+			});
+		});
+	</script>
+	<style type="text/css">
+		#temp {
+			background-color: #98bf21;
+			height: 100px;
+			width: 100px;
+			position: absolute;
+			display: block;	
+		}
+	</style>
+</head>
+<body>
+<button>Start Animation</button>
+<br>
+<div id="temp"></div>
+</body>
+</html>

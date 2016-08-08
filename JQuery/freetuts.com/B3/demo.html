@@ -1,0 +1,61 @@
+<html>
+<head>
+	<title>JQuery Selector</title>
+	<script language="javascript" src="../jquery-2.0.0.min.js"></script>
+	
+<script>
+	var h2_1 = document.getElementById("title");
+	var h2_2 = $("#title");
+	var p_1 = $(".description");
+</script>
+
+<script>
+function clickEvent() {
+	var element = $(".container");
+	var value = "";
+
+	for (var i = 0; i <= element.length; i++){
+		value += $(element[i]).text();
+	}
+
+	alert(value);
+}
+</script>
+	 
+</head>
+<body>
+
+<!-- 
+Trong jQuery thi ta sử dụng cú pháp của CSS để truy vấn các thành phần trong html
+Cách lấy 1 đối tượng trọng jquery : $("object")
+Trong đó object được lấy theo cú pháp của css(CSS_SELECTOR) , ví dụ:
+Lấy theo id:    #id
+Lấy theo class: .class
+Nếu truy vấn theo id thì jquery sẽ trả về 1 đối tượng html. Nếu trong tài liệu html
+có tồn tại id đó thì length sẽ trả về 1, ngược lại trả về 0
+Nếu truy vấn theo class thì jquery sẽ trả về 1 mảng các đối tượng html. Nếu trong tài
+liệu ko chứa class đó thì length trả về 0, ngược lại trả về số phần tử html chứa class đó
+-->
+<div id="container_1">
+	<h2 id="title"></h2>
+	<p class="description"></p>
+</div>
+
+
+<div class="container">
+    Test1
+</div>
+<div class="container">
+    Test1
+</div>
+<div class="container">
+    Test1
+</div>
+<div class="container">
+    Test1
+</div>
+<br>
+<input type="button" value="Click Me" onclick="clickEvent()" />
+
+</body>
+</html>

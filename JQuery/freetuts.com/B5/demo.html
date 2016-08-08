@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Selectors Based on JQuery</title>
+	<style type="text/css">
+	body {
+		margin: 20px;
+	}
+
+	a {
+		display: block;
+		border: solid 1px blue;
+		padding: 5px;
+		height: 30px;
+		line-height: 30px;
+		text-decoration: none;
+		margin-bottom: 20px;
+	}
+	.selected {
+		border: solid 1px;
+		color: white;
+		background: blue;
+	}
+	</style>
+</head>
+<body>
+<!--
+Bản chất mọi truy vấn Selector của jQuery thường dựa vào Attributes của thẻ HTML bởi vì các gí trị ID hay CLASS cũng chính là các thuộc tính nhưng nó có tính chắc đặc biệt hơn chút xíu đó là trong tài liệu HTML thì ID là duy nhất còn CLASS thì có thể có nhiều. 
+
+$('*') : chọn tất cả các thẻ HTML
+$('.class_name') : chọn tất cả các thẻ HTML có class "class_name"
+$('element') : chọn tất cả các thẻ có tên là element . Ví dụ : $('a') : chọn tất cả các thẻ <a>
+$('#id_name') : chọn tất cả các thẻ html có id="id_name" - id là duy nhất
+$('id_name , .class_name') : chọn tất cả các thẻ có id là "id_name" hoặc là có class là "class_name" . Truy vấn này có thể lựa chọn nhiều attributes các chúng cách nhau bởi dấu phẩy
+-->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#button").click(function(event) {
+			// Tất cả các thẻ sẽ được add class selected
+			$('*').addClass('selected'); 
+			// Tất cả các thẻ có class= "freetuts" sẽ được add selected
+			$('.freetuts').addClass('selected');
+			// Tất cả các thẻ <a> đều được add selected
+			$('a').addClass('selected');
+			// Các thẻ có id="fretuts" thì được add selected
+			$('#freetuts').addClass('selected');
+		});	
+	});
+
+</script>
+<a href="#" id="freetuts"> id = freetuts</a>
+<a href="#" class="freetuts"> class = freetuts</a>
+<a href="#"> Khong co id va class</a>
+<a href="#" class="freetuts"> class = freetuts</a>
+</body> 
+</html>

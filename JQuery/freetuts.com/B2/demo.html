@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>B2 Javascript Compiler</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<script language="javascript" src="../jquery-2.0.0.min.js"></script>
+
+<!-- 
+Java script sẽ biên dịch từ trên xuống dưới và trái sang phải.
+Tuy nhiên những đoạn mã nằm trong sự kiện window.onload thì sẽ được trình biên
+dịch bỏ qua và sẽ được thực thi sau khi toàn bộ trang web đã được load xong.
+Khi đó trình biên dịch sẽ duyệt lại nó 1 lần từ trên xuống dưới và thực thi những
+đoạn mã bên trong nó.
+Cú pháp sự kiện window.onload
+	window.onload = function() {
+		// Nội dung mã
+	}
+Với ví dụ bên dưới thì thứ tự thực thi sẽ như sau:
+Đoạn mã 1 -> 2 -> 4 -> 3. Sau khi tất cả mã được biên dịch thì các thành phần 
+trong window.onload mới được biên dịch và thực thi
+-->
+<script language="javascript">
+	alert("Doan thu nhat");
+	alert("Doan thu hai");
+	window.onload = function(){
+		alert("Doan thu ba");
+	};
+	alert("Doan thu tu");
+</script>
+<!-- 
+Trong Jquery cũng hỗ trợ 1 cách gọi khác cho sự kiện window.onload đó là
+	$(document).ready(function(){
+		// Nội dung mã
+	});
+-->
+<script>
+	alert("Tech1");
+	alert("Tech2");
+	$(document).ready(function(){
+		alert("Tech3");
+	});
+	alert("Tech4");
+</script>
+
+<!-- 
+Chú ý về thứ tự viết mã script , nếu mã script có truy xuất đến 1 thẻ html mà
+thẻ đó được khai báo sau mã javascript thì đoạn mã sẽ không thể biên dịch được.
+Như ví dụ dưới đây, nếu đoạn mã javascript được khai báo trước khi khai báo thẻ div
+thì đoạn mã sẽ không thể biên dịch vì không xác định được id="demo" là thực thể html nào
+-->
+<div id="demo">
+	Noi dung ben trong div
+</div>
+<br />
+<input type="button" name="btn_show" id="btn_show" value="Click Me" />
+<script>
+	$("#btn_show").click(function(){
+		alert("AAAAAAAA");
+		document.getElementById("demo").innerHTML = "Toi la Chu Quang Vien";
+		//$("#demo").innerHTML = "AAAAAAAAAAA";
+	});
+</script>
+</body>
+</html>
